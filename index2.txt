@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batz Link Gateway</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #000; /* Dark theme like your Batman style */
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #ad-section { display: block; }
+        #link-section { display: none; }
+        .btn {
+            background: #f00; /* Red button */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .timer { font-size: 1.2em; color: #aaa; }
+    </style>
+</head>
+<body>
+
+    <div id="ad-section">
+        <h2>Wait for 5 seconds...</h2>
+        <div class="timer" id="countdown">5</div>
+        <div style="margin: 20px; padding: 20px; border: 1px dashed #555;">
+            <p>ADVERTISEMENT SPACE</p>
+        </div>
+    </div>
+
+    <div id="link-section">
+        <h2>Welcome, Batz!</h2>
+        <p>Choose where to go:</p>
+        <a href="https://youtube.com/@BatzIsLive" class="btn">My YouTube Channel</a><br>
+        <a href="https://instagram.com/your-insta" class="btn" style="background:#E1306C;">Instagram</a>
+    </div>
+
+    <script>
+        // Initialize Telegram Web App
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Make it full screen
+
+        let seconds = 5;
+        const countdownEl = document.getElementById('countdown');
+        const adSection = document.getElementById('ad-section');
+        const linkSection = document.getElementById('link-section');
+
+        // Logic for the timer
+        const timer = setInterval(() => {
+            seconds--;
+            countdownEl.innerText = seconds;
+            if (seconds <= 0) {
+                clearInterval(timer);
+                adSection.style.display = 'none';
+                linkSection.style.display = 'block';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
